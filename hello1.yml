@@ -1,0 +1,21 @@
+name: Hello World With Input
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Who should we greet?"
+        required: true
+        default: "Kenichi"
+      mood:
+        description: "How are you feeling today?"
+        required: false
+        default: "great"
+
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print custom greeting
+        run: echo "👋 Hello, ${{ github.event.inputs.name }}! Hope you're feeling ${{ github.event.inputs.mood }} today."
+        
