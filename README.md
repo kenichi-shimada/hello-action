@@ -1,7 +1,8 @@
+# RSS feed download in a Dropbox folder
+
 ## Overview
 
-This project automatically collects recent research papers from selected journals.  
-It downloads new articles, filters for research content, formats them into a digest, and uploads the summary to Dropbox (manually at this moment, but it will be updated to run weekly).
+This project is intended to automatically collect recent research papers from selected journals such as Nature, Science, and Cell. It downloads new articles, filters for research content, and formats them into a digest that is uploaded to Dropbox. At the current stage, the process runs manually, but it will be extended to execute weekly via GitHub Actions.
 
 The goal is to stay up to date with major discoveries even when daily workloads are overwhelming — without needing to manually browse journal websites or manage bookmarks.
 
