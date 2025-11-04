@@ -1,4 +1,4 @@
-name: Upload to Dropbox
+name: Download RSS feeds
 
 on:
   workflow_dispatch:       # run manually
