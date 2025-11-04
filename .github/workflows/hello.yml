@@ -1,0 +1,19 @@
+name: Hello World Action
+
+on:
+  push:                  # triggers when you push a commit
+  workflow_dispatch:     # allows you to run it manually
+
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print greeting
+        run: echo "🎉 Hello, world! This GitHub Action is running successfully."
+
+      - name: Show current date
+        run: date
+
+      - name: List repository files
+        run: ls -la
