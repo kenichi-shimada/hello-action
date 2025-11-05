@@ -1,0 +1,25 @@
+name: Pubmed RSS feeds weekly
+
+on:
+  workflow_dispatch:       # run manually
+  # schedule:
+  #   - cron: "0 8 * * 1"    # optional - every Monday 8 AM UTC
+
+jobs:
+  upload_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Dropbox upload script
+        env:
+          DROPBOX_TOKEN: ${{ secrets.DROPBOX_TOKEN }}
+        run: python rss_feed_weekly_pubmed.py
+        
