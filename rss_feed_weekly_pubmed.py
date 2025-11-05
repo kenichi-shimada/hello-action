@@ -67,9 +67,9 @@ def fetch_pubmed_feed(feed_name, url):
 # --------------------------------------------------
 
 feeds = {
-    "general": "https://pubmed.ncbi.nlm.nih.gov/rss/search/1b7rv9zNdqwv4DwC9pDjXKQAZH0MXsZGaBfVarIwOKOpgqHQy6/?limit=15",
-    "immune": "https://pubmed.ncbi.nlm.nih.gov/rss/search/1ZOXa2PYRt-OlyyGkx28QJAQ_fXoQVYyQVLqj2sT7-CEDm4YbG/?limit=15",
-    "cancer": "https://pubmed.ncbi.nlm.nih.gov/rss/search/1nQmw1FvDkC1rwg15ohSrbNEmZQtnwqCr3-xVkm2BnVJrWyMfO/?limit=100",
+    "general": "https://pubmed.ncbi.nlm.nih.gov/rss/search/1b7rv9zNdqwv4DwC9pDjXKQAZH0MXsZGaBfVarIwOKOpgqHQy6/?limit=200",
+    "immune": "https://pubmed.ncbi.nlm.nih.gov/rss/search/1ZOXa2PYRt-OlyyGkx28QJAQ_fXoQVYyQVLqj2sT7-CEDm4YbG/?limit=200",
+    "cancer": "https://pubmed.ncbi.nlm.nih.gov/rss/search/1nQmw1FvDkC1rwg15ohSrbNEmZQtnwqCr3-xVkm2BnVJrWyMfO/?limit=200",
 }
 
 timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d")
