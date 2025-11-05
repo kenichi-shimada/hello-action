@@ -99,24 +99,36 @@ for feed_name, feed_url in feeds.items():
     # --------------------------------------------------
     token = os.environ.get("DROPBOX_TOKEN")
     if token and os.path.exists(digest_file):
-        print(f"📤 Uploading {feed_name} digest to Dropbox...")
+        date_dir = timestamp  # e.g. "2025-11-04"
+        dropbox_path = f"/{date_dir}/{digest_file}"
+
+        print(f"📤 Uploading {feed_name} digest to Dropbox → {dropbox_path}")
+
         url = "https://content.dropboxapi.com/2/files/upload"
         headers = {
             "Authorization": f"Bearer {token}",
             "Dropbox-API-Arg": json.dumps({
-                "path": f"/Apps/rss_uploader/{digest_file}",
+                "path": dropbox_path,
                 "mode": "overwrite",
                 "mute": False
             }),
             "Content-Type": "application/octet-stream",
         }
+
         with open(digest_file, "rb") as f:
             data = f.read()
+
         req = urllib.request.Request(url, data=data, headers=headers, method="POST")
-        with urllib.request.urlopen(req) as resp:
-            result = json.loads(resp.read().decode())
-            print(f"✅ Uploaded to Dropbox: {result['path_display']}")
+        try:
+            with urllib.request.urlopen(req) as resp:
+                result = json.loads(resp.read().decode())
+                print(f"✅ Uploaded to Dropbox: {result['path_display']}")
+        except urllib.error.HTTPError as e:
+            print(f"⚠️ Dropbox upload failed ({e.code} {e.reason}) — check token or app folder.")
+        except Exception as e:
+            print(f"⚠️ Dropbox upload error: {e}")
     else:
         print(f"⚠️ Dropbox upload skipped for {feed_name} (no token found).")
+
 
 print("\n✅ All feeds processed successfully.")
